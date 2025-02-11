@@ -1,0 +1,5 @@
+.main-layout {
+  aside {
+    @include column(5);
+  }
+}
