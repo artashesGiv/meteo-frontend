@@ -7,7 +7,7 @@ import { TransitionBase } from '../TransitionBase';
 import './button.scss';
 
 type ButtonView = 'primary' | 'base' | 'flat';
-type ButtonSize = 's' | 'm' | 'l' | 'xl';
+type ButtonSize = 's' | 'm' | 'l';
 
 export type ButtonProps = DefaultProps<{
   text?: string;
@@ -42,6 +42,7 @@ export const Button = memo<ButtonProps>(props => {
       <TransitionBase
         isVisible={true}
         keyProp={loading ? 'loading' : 'default'}
+        className='button__content'
       >
         {loading ? (
           <Spinner {...spinnerProps} />
@@ -90,16 +91,15 @@ const useButtonClasses = ({
   }, [disabled, className, size, view, loading, icon, text]);
 
 const SPINNER_VIEW_MAP: Record<ButtonView, SpinnerProps['view']> = {
-  base: 'primary',
-  flat: 'dark',
+  base: 'dark',
+  flat: 'primary',
   primary: 'light',
 };
 
 const SPINNER_SIZE_MAP: Record<ButtonSize, SpinnerProps['size']> = {
   s: 's',
-  m: 'm',
-  l: 'l',
-  xl: 'l',
+  m: 's',
+  l: 's',
 };
 
 const useSpinnerProps = ({

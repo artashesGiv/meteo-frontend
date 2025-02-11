@@ -22,9 +22,9 @@ export const Spinner = memo<SpinnerProps>(
 
     const svgAttrs = useMemo(() => {
       const mapColors: Record<SpinnerView, string> = {
-        dark: '#5a79ad',
-        primary: '#db6a19',
-        light: '#a5b4ca',
+        dark: '#212529',
+        primary: '#007BFF',
+        light: '#fff',
       };
       return {
         color: mapColors[view],

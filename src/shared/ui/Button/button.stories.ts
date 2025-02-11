@@ -17,7 +17,7 @@ const meta = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['s', 'm', 'l', 'xl'] as ButtonProps['size'][],
+      options: ['s', 'm', 'l'] as ButtonProps['size'][],
     },
     view: {
       control: 'select',
