@@ -1,0 +1,23 @@
+@use 'sass:math';
+@use '../functions' as *;
+
+$h0: '900 #{toRem(80)}/#{toRem(104)}' var(--font-mulish);
+$h1: '700 #{toRem(48)}/#{toRem(64)}' var(--font-nunito-sans);
+$h2: '600 #{toRem(32)}/#{toRem(48)}' var(--font-mulish);
+$sh1: '400 #{toRem(28)}/#{toRem(44)}' var(--font-nunito-sans);
+$b1: '400 #{toRem(24)}/#{toRem(40)}' var(--font-nunito-sans);
+$b2: '300 #{toRem(20)}/#{toRem(28)}' var(--font-mulish);
+
+:root {
+  // fonts
+  --font-nunito-sans: Nunito Sans, sans-serif;
+  --font-mulish: Mulish, sans-serif;
+
+  // typography
+  --h0: #{$h0};
+  --h1: #{$h1};
+  --h2: #{$h2};
+  --sh1: #{$sh1};
+  --b1: #{$b1};
+  --b2: #{$b2};
+}

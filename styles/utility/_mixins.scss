@@ -1,0 +1,47 @@
+@use './functions' as *;
+
+@mixin center($position: 'both') {
+  position: absolute;
+
+  @if $position == 'vertical' {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if $position == 'horizontal' {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if $position == 'stretch' {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@mixin disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@mixin row($gap: 0) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: toRem($gap);
+}
+
+@mixin column($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  gap: toRem($gap);
+}

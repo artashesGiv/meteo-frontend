@@ -1,0 +1,27 @@
+.card-collapse {
+  $b: &;
+
+  &__header {
+    @include row(20);
+  }
+
+  &__title {
+    flex-grow: 1;
+    font: var(--sh1);
+  }
+
+  &__icon {
+    font-size: toRem(35);
+    color: var(--dark-gray);
+  }
+
+  &__content {
+    font: var(--b1);
+  }
+
+  &.is-open {
+    #{$b}__icon {
+      transform: rotate(180deg);
+    }
+  }
+}

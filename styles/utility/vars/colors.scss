@@ -1,0 +1,24 @@
+:root {
+  --primary-color: brown;
+
+  --main-black: #1b1b1b;
+  --main-blue: #29007f;
+  --main-orange: #db6a19;
+  --main-white: #fff;
+  --main-gray: #a5b4ca;
+
+  --secondary-gray: #e5e9f0;
+
+  --dark-gray: #5a79ad;
+
+  --main-gradient: linear-gradient(90deg, #db6a19 0%, #29007f 100%);
+  --light-gradient: linear-gradient(
+    90deg,
+    #e5e9f0 0%,
+    #ffffff 50%,
+    #e5e9f0 100%
+  );
+
+  //shadows
+  --shadow-base: 0 8px 16px 0 #1b1b1b33;
+}

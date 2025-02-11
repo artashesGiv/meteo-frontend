@@ -1,0 +1,14 @@
+.icon-base {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 20px;
+  transition: var(--transition-all);
+
+  &::before {
+    font-family: icon, sans-serif;
+    display: block;
+    font-size: inherit;
+    color: inherit;
+    line-height: 1;
+  }
+}

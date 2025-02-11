@@ -1,0 +1,8 @@
+.badge {
+  display: inline-block;
+  padding: toRem(8) toRem(16);
+  height: toRem(56);
+  font: var(--b1);
+  border-radius: toRem(16);
+  border: 1px solid var(--main-blue);
+}

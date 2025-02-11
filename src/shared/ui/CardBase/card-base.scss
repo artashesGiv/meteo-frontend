@@ -1,0 +1,43 @@
+.card-base {
+  position: relative;
+  border-radius: var(--border-radius-base);
+  transition: var(--transition-all);
+
+  &--view {
+    &--base {
+      border: 1px solid var(--main-gray);
+      background-color: var(--main-white);
+    }
+
+    &--fill {
+      background-color: var(--main-gray);
+      color: var(--main-white);
+    }
+  }
+
+  &--size {
+    &--s {
+      padding: toRem(0);
+    }
+
+    &--m {
+      padding: toRem(24);
+    }
+
+    &--l {
+      padding: toRem(32);
+    }
+  }
+
+  &__href {
+    @include center('stretch');
+  }
+
+  &.is-interactive {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: var(--shadow-base);
+    }
+  }
+}

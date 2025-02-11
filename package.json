@@ -1,0 +1,58 @@
+{
+  "name": "meteo-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --fix",
+    "format-icons": "node scripts/formattingIcons.mjs",
+    "icons": "npm run format-icons && fantasticon",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "prepare": "husky && husky install"
+  },
+  "dependencies": {
+    "framer-motion": "^12.4.1",
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@eslint/eslintrc": "^3",
+    "@storybook/addon-essentials": "^8.5.3",
+    "@storybook/addon-interactions": "^8.5.3",
+    "@storybook/addon-onboarding": "^8.5.3",
+    "@storybook/blocks": "^8.5.3",
+    "@storybook/nextjs": "^8.5.3",
+    "@storybook/react": "^8.5.3",
+    "@storybook/test": "^8.5.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.24.0",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.6",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-storybook": "^0.11.2",
+    "fantasticon": "^1.2.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.4.3",
+    "oslllo-svg-fixer": "^5.0.0",
+    "prettier": "^3.4.2",
+    "sass": "^1.83.4",
+    "storybook": "^8.5.3",
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "next lint --fix",
+      "prettier --write ."
+    ]
+  }
+}

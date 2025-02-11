@@ -1,0 +1,8 @@
+@use '../functions' as *;
+
+$border-radius-base: toRem(16);
+
+:root {
+  --border-radius-base: #{$border-radius-base};
+  --transition-all: all 0.3s ease;
+}

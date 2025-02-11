@@ -1,0 +1,14 @@
+.divider {
+  height: toRem(1);
+  width: 100%;
+
+  &--view {
+    &--dark {
+      background-color: var(--dark-gray);
+    }
+
+    &--light {
+      background-color: var(--main-gray);
+    }
+  }
+}
