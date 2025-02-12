@@ -1,5 +1,20 @@
 .main-layout {
-  aside {
-    @include column(5);
+  display: grid;
+  grid-template-rows: 150px 1fr;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+        "nav head head"
+        "nav main main";
+
+  &__header {
+    grid-area: head;
+  }
+
+  &__nav-bar {
+    grid-area: nav;
+  }
+
+  &__main {
+    grid-area: main;
   }
 }
