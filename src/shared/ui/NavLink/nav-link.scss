@@ -1,4 +1,6 @@
 .nav-link {
+  $b: &;
+
   display: flex;
   align-items: center;
   gap: toRem(8);
@@ -12,6 +14,10 @@
 
   &--active {
     font-weight: 800;
+
+    #{$b}__icon {
+      color: var(--primary-color);
+    }
   }
 
   &__icon {

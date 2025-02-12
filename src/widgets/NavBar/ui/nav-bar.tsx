@@ -3,6 +3,7 @@
 import { memo, useMemo, useState } from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Button, TransitionBase } from '@/shared';
@@ -22,24 +23,24 @@ export const NavBar = memo<NavBarProps>(({ className }) => {
       icon: 'cross',
     },
     {
-      href: '/diseases',
+      href: '/geoinformation-system',
       title: 'Геоинформационная система',
-      icon: 'cross',
+      icon: 'chevron-bar-right',
     },
     {
-      href: '/geoinformation-system',
+      href: '/weather-forecast',
       title: 'Прогноз погоды',
-      icon: 'cross',
+      icon: 'chevron-bar-left',
     },
     {
       href: '/technological-maps',
       title: 'Технологические карты',
-      icon: 'cross',
+      icon: 'chevron-up',
     },
     {
-      href: '/weather-forecast',
+      href: '/diseases',
       title: 'Болезни',
-      icon: 'cross',
+      icon: 'chevron-down',
     },
   ];
 
@@ -49,12 +50,14 @@ export const NavBar = memo<NavBarProps>(({ className }) => {
     <div className={classes}>
       <div className='nav-bar__controls'>
         <TransitionBase isVisible={!isHidden}>
-          <Image
-            src='https://placehold.co/220x50'
-            alt='logo'
-            width={220}
-            height={46}
-          />
+          <Link href='/'>
+            <Image
+              src='https://placehold.co/220x50'
+              alt='logo'
+              width={220}
+              height={46}
+            />
+          </Link>
         </TransitionBase>
         <Button
           squared={true}

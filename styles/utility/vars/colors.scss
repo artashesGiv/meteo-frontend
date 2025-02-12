@@ -3,7 +3,10 @@
   --white-color: #fff;
   --black-color: #212529;
   --gray-color: #EFEFEF;
-  --gray-secondary: #D9D9D9;
+  --gray-secondary: var(--gray-400);
+
+  --gray-300: #848484;
+  --gray-400: #D9D9D9;
 
   // old
   --main-black: #1b1b1b;

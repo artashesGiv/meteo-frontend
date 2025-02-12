@@ -2,10 +2,10 @@
 @use '../functions' as *;
 
 $h0: '900 #{toRem(80)}/#{toRem(104)}' var(--font-mulish);
-$h1: '700 #{toRem(48)}/#{toRem(64)}' var(--font-nunito-sans);
+$h1: '700 #{toRem(56)}/#{toRem(72)}' var(--font-nunito-sans);
 $h2: '600 #{toRem(32)}/#{toRem(48)}' var(--font-mulish);
 $sh1: '400 #{toRem(28)}/#{toRem(44)}' var(--font-nunito-sans);
-$b1: '400 #{toRem(24)}/#{toRem(40)}' var(--font-nunito-sans);
+$b1: '400 #{toRem(24)}/#{toRem(32)}' var(--font-nunito-sans);
 $b2: '300 #{toRem(20)}/#{toRem(28)}' var(--font-mulish);
 
 :root {

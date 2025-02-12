@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { mulish, nunitoSans } from '@styles/fonts';
 
 import { Header } from '@/widgets/Header/ui';
+import { Main } from '@/widgets/Main/ui';
 import { NavBar } from '@/widgets/NavBar/ui';
 
 import './layout.scss';
@@ -27,7 +28,7 @@ export default function RootLayout({
         >
           <Header />
           <NavBar className='main-layout__nav-bar' />
-          <main className='main-layout__main'>{children}</main>
+          <Main className='main-layout__main'>{children}</Main>
         </div>
       </body>
     </html>
