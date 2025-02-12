@@ -7,6 +7,7 @@
   font-size: toRem(16);
   text-decoration: none;
   color: var(--black-color);
+  transition: var(--transition-all);
 
   &:visited {
     color: inherit;

@@ -11,32 +11,36 @@ export type NavLinkProps = DefaultProps<{
   href: string;
   title: string;
   isActive?: boolean;
-  isHidden?: boolean;
+  isCollapse?: boolean;
 }>;
 
-export const NavLink = memo<NavLinkProps>(
-  ({ className, icon, href, title, isActive, isHidden }) => {
-    const classes = useNavLinkClasses(className, isActive);
+export const NavLink = memo<NavLinkProps>(props => {
+  const { icon, href, title, isCollapse } = props;
+  const classes = useNavLinkClasses(props);
 
-    return (
-      <Link href={href} className={classes}>
-        <IconBase className='nav-link__icon' name={icon} />
-        <TransitionBase isVisible={!isHidden}>
-          <span>{title}</span>
-        </TransitionBase>
-      </Link>
-    );
-  },
-);
+  return (
+    <Link href={href} className={classes}>
+      <IconBase className='nav-link__icon' name={icon} />
+      <TransitionBase isVisible={!isCollapse}>
+        <span>{title}</span>
+      </TransitionBase>
+    </Link>
+  );
+});
 
 NavLink.displayName = 'NavLink';
 
-const useNavLinkClasses = (
-  className: NavLinkProps['className'],
-  isActive: NavLinkProps['isActive'],
-) =>
+const useNavLinkClasses = ({ isActive, className, isCollapse }: NavLinkProps) =>
   useMemo(() => {
-    const classes = [className, 'nav-link', isActive && 'nav-link--active'];
+    const classes = [className, 'nav-link'];
+
+    if (isCollapse) {
+      classes.push('nav-link--collapse');
+    }
+
+    if (isActive) {
+      classes.push('nav-link--active');
+    }
 
     return classes.join(' ');
-  }, [className, isActive]);
+  }, [className, isActive, isCollapse]);

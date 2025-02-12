@@ -14,7 +14,7 @@ import './nav-bar.scss';
 export type NavBarProps = DefaultProps;
 
 export const NavBar = memo<NavBarProps>(({ className }) => {
-  const [isHidden, setIsHidden] = useState(false);
+  const [isCollapse, setIsCollapse] = useState(false);
 
   const routes: NavLinkProps[] = [
     {
@@ -44,12 +44,12 @@ export const NavBar = memo<NavBarProps>(({ className }) => {
     },
   ];
 
-  const classes = useNavBarClasses(className, isHidden);
+  const classes = useNavBarClasses(className, isCollapse);
   const pathname = usePathname();
   return (
     <div className={classes}>
       <div className='nav-bar__controls'>
-        <TransitionBase isVisible={!isHidden}>
+        <TransitionBase isVisible={!isCollapse}>
           <Link href='/'>
             <Image
               src='https://placehold.co/220x50'
@@ -61,10 +61,10 @@ export const NavBar = memo<NavBarProps>(({ className }) => {
         </TransitionBase>
         <Button
           squared={true}
-          icon={isHidden ? 'chevron-bar-right' : 'chevron-bar-left'}
+          icon={isCollapse ? 'chevron-bar-right' : 'chevron-bar-left'}
           view='secondary'
           size='l'
-          onClick={() => setIsHidden(!isHidden)}
+          onClick={() => setIsCollapse(!isCollapse)}
         />
       </div>
 
@@ -77,7 +77,7 @@ export const NavBar = memo<NavBarProps>(({ className }) => {
               {...route}
               isActive={isActive}
               key={route.href}
-              isHidden={isHidden}
+              isCollapse={isCollapse}
             />
           );
         })}
