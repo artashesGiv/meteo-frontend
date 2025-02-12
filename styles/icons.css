@@ -1,7 +1,7 @@
 @font-face {
     font-family: "icons";
-    src: url("/fonts/icons/icons.woff?76c006e22881c7097ee5c554bfb5c92b") format("woff"),
-url("/fonts/icons/icons.woff2?76c006e22881c7097ee5c554bfb5c92b") format("woff2");
+    src: url("/fonts/icons/icons.woff?5adb0f64411735a3353070ed0ba7e2fa") format("woff"),
+url("/fonts/icons/icons.woff2?5adb0f64411735a3353070ed0ba7e2fa") format("woff2");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -30,6 +30,9 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-cross:before {
     content: "\f105";
 }
-.icon-trash:before {
+.icon-person-fill:before {
     content: "\f106";
+}
+.icon-trash:before {
+    content: "\f107";
 }

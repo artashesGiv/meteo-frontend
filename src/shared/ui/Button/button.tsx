@@ -6,7 +6,7 @@ import { TransitionBase } from '../TransitionBase';
 
 import './button.scss';
 
-type ButtonView = 'primary' | 'base' | 'flat';
+type ButtonView = 'primary' | 'base' | 'flat' | 'secondary';
 type ButtonSize = 's' | 'm' | 'l';
 
 export type ButtonProps = DefaultProps<{
@@ -16,6 +16,8 @@ export type ButtonProps = DefaultProps<{
   icon?: Icons;
   disabled?: boolean;
   loading?: boolean;
+  rounded?: boolean;
+  squared?: boolean;
 }>;
 
 export const Button = memo<ButtonProps>(props => {
@@ -67,6 +69,8 @@ const useButtonClasses = ({
   loading,
   icon,
   text,
+  rounded,
+  squared,
 }: ButtonProps) =>
   useMemo(() => {
     const classes = [
@@ -87,13 +91,22 @@ const useButtonClasses = ({
       classes.push('is-only-icon');
     }
 
+    if (rounded) {
+      classes.push('is-rounded');
+    }
+
+    if (squared) {
+      classes.push('is-squared');
+    }
+
     return classes.join(' ');
-  }, [disabled, className, size, view, loading, icon, text]);
+  }, [disabled, className, size, view, loading, icon, text, rounded, squared]);
 
 const SPINNER_VIEW_MAP: Record<ButtonView, SpinnerProps['view']> = {
   base: 'dark',
   flat: 'primary',
   primary: 'light',
+  secondary: 'light',
 };
 
 const SPINNER_SIZE_MAP: Record<ButtonSize, SpinnerProps['size']> = {

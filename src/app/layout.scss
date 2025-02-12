@@ -5,6 +5,7 @@
   grid-template-areas:
         "nav head head"
         "nav main main";
+  min-height: 100vh;
 
   &__header {
     grid-area: head;

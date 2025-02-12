@@ -8,7 +8,8 @@
   outline: none;
   width: 100%;
   cursor: pointer;
-  padding: 0 toRem(24);
+  padding: 0 toRem(16);
+  font-size: toRem(16);
   gap: toRem(12);
   transition: var(--transition-all);
 
@@ -43,13 +44,21 @@
         box-shadow: var(--shadow-base);
       }
     }
+
+    &--secondary {
+      background-color: var(--gray-secondary);
+      color: var(--black-color);
+
+      &:hover {
+        box-shadow: var(--shadow-base);
+      }
+    }
   }
 
   &--size {
     &--s {
       height: toRem(32);
       min-width: toRem(32);
-      font: var(--b2);
       border-radius: toRem(4);
 
       #{$b}__icon {
@@ -60,7 +69,6 @@
     &--m {
       height: toRem(36);
       min-width: toRem(36);
-      font: var(--b2);
       border-radius: toRem(4);
 
       #{$b}__icon {
@@ -71,7 +79,6 @@
     &--l {
       height: toRem(46);
       min-width: toRem(46);
-      font: var(--b2);
       border-radius: toRem(5);
 
       #{$b}__icon {
@@ -88,5 +95,21 @@
   &.is-only-icon {
     width: auto;
     padding: 0;
+  }
+
+  &.is-rounded {
+    border-radius: 100%;
+
+    #{$b}__icon {
+      font-size: toRem(24);
+    }
+  }
+
+  &.is-squared {
+    border-radius: 0;
+
+    #{$b}__icon {
+      font-size: toRem(24);
+    }
   }
 }

@@ -7,12 +7,12 @@
   transition-property: width, padding, gap;
 
   &--hidden {
-    width: toRem(100);
+    width: toRem(94);
     padding: toRem(48) toRem(24);
   }
 
   &__controls {
-    @include row(24);
+    @include row(34);
     width: 100%;
     justify-content: flex-end;
   }

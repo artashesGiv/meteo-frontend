@@ -5,7 +5,7 @@ import { memo, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
-import { IconBase, TransitionBase } from '@/shared';
+import { Button, TransitionBase } from '@/shared';
 import { NavLink, type NavLinkProps } from '@/shared/ui/NavLink';
 
 import './nav-bar.scss';
@@ -53,16 +53,16 @@ export const NavBar = memo<NavBarProps>(({ className }) => {
             src='https://placehold.co/220x50'
             alt='logo'
             width={220}
-            height={50}
+            height={46}
           />
         </TransitionBase>
-        <div
-          className='nav-bar__hide-btn'
+        <Button
+          squared={true}
+          icon={isHidden ? 'chevron-bar-right' : 'chevron-bar-left'}
+          view='secondary'
+          size='l'
           onClick={() => setIsHidden(!isHidden)}
-        >
-          {!isHidden && <IconBase name='chevron-bar-left' />}
-          {isHidden && <IconBase name='chevron-bar-right' />}
-        </div>
+        />
       </div>
 
       <aside className='nav-bar__aside'>

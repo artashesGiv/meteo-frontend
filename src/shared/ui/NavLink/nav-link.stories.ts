@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { NavLink } from './nav-link';
 
 const meta = {
-  title: 'Shared/NavBar',
+  title: 'Shared/NavLink',
   component: NavLink,
   parameters: {
     layout: 'centered',

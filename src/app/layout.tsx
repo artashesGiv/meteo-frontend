@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { mulish, nunitoSans } from '@styles/fonts';
 
+import { Header } from '@/widgets/Header/ui';
 import { NavBar } from '@/widgets/NavBar/ui';
 
 import './layout.scss';
@@ -20,10 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body className={`main-layout ${nunitoSans.variable} ${mulish.variable}`}>
-        <header className='main-layout__header'>header</header>
-        <NavBar className='main-layout__nav-bar' />
-        <main className='main-layout__main'>{children}</main>
+      <body>
+        <div
+          className={`main-layout ${nunitoSans.variable} ${mulish.variable}`}
+        >
+          <Header />
+          <NavBar className='main-layout__nav-bar' />
+          <main className='main-layout__main'>{children}</main>
+        </div>
       </body>
     </html>
   );
