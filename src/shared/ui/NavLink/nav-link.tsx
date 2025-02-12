@@ -2,7 +2,8 @@ import { memo, useMemo } from 'react';
 
 import Link from 'next/link';
 
-import { IconBase, TransitionBase } from '@/shared';
+import { IconBase } from '../IconBase';
+import { TransitionBase } from '../TransitionBase';
 
 import './nav-link.scss';
 
