@@ -9,7 +9,9 @@ declare global {
     className?: string;
     onClick?: () => void;
   } & T;
-  type DefaultPropsWithChildren<T> = DefaultProps<T> & { children?: ReactNode };
+  type DefaultPropsWithChildren<T = object> = DefaultProps<T> & {
+    children?: ReactNode;
+  };
 }
 
 export {};
