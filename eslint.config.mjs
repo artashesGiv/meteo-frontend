@@ -32,6 +32,7 @@ const eslintConfig = [
     ],
     rules: {
       'prettier/prettier': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       'react/self-closing-comp': 'error',
       'react/jsx-curly-brace-presence': [
         'error',

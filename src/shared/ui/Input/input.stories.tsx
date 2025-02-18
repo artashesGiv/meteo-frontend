@@ -1,5 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useForm } from 'react-hook-form';
+import { type JSX } from 'react';
+
+import type { Meta } from '@storybook/react';
+import { type FieldValues, useForm } from 'react-hook-form';
 
 import { Input } from './input';
 
@@ -12,11 +14,15 @@ const meta = {
 } satisfies Meta<typeof Input>;
 
 export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Base: Story = () => {
-  const { control, watch } = useForm<{ myInput: string }>({
+interface FormFields extends FieldValues {
+  myInput: string;
+}
+export const Base: () => JSX.Element = () => {
+  const {
+    control,
+    watch,
+    formState: { errors },
+  } = useForm<FormFields>({
     defaultValues: { myInput: '' },
     mode: 'onChange',
   });
@@ -24,10 +30,11 @@ export const Base: Story = () => {
 
   return (
     <div>
-      <Input<{ myInput: string }>
+      <Input
         name='myInput'
         control={control}
         rules={{ required: 'Required field' }}
+        error={errors.myInput}
       />
       {myInputValue}
     </div>

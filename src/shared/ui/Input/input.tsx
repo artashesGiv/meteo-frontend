@@ -1,34 +1,24 @@
 import { memo, useMemo } from 'react';
 
-import {
-  type Control,
-  Controller,
-  type FieldError,
-  type FieldValues,
-  type Path,
-  type RegisterOptions,
-} from 'react-hook-form';
+import { Controller, type FieldError } from 'react-hook-form';
 
 import { IconBase } from '@/shared';
 
 import './input.scss';
 
-export type InputProps<T extends FieldValues> = DefaultProps<{
+export type InputProps = DefaultProps<{
   label?: string;
   placeholder?: string;
-  name: Path<T>;
-  control: Control<T>;
-  rules?: Omit<
-    RegisterOptions<T, Path<T>>,
-    'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
-  >;
+  name: string;
+  control: any;
+  rules?: Record<string, any>;
   successMessage?: string;
   error?: FieldError;
   message?: string;
   size?: 's' | 'm' | 'l';
 }>;
 
-export const Input = memo(<T extends FieldValues>(props: InputProps<T>) => {
+export const Input = memo<InputProps>(props => {
   const {
     error,
     label,
@@ -68,7 +58,7 @@ export const Input = memo(<T extends FieldValues>(props: InputProps<T>) => {
 
 Input.displayName = 'Input';
 
-const useInputClasses = <T extends FieldValues>({ className }: InputProps<T>) =>
+const useInputClasses = ({ className }: InputProps) =>
   useMemo(() => {
     const classes = [className, 'input'];
 
