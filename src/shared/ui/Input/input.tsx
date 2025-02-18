@@ -10,7 +10,7 @@ export type InputProps = DefaultProps<{
   label?: string;
   placeholder?: string;
   name: string;
-  control: any;
+  control: any; // TODO: типизировать
   rules?: Record<string, any>;
   successMessage?: string;
   error?: FieldError;
