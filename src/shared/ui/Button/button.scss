@@ -23,7 +23,11 @@
       color: var(--white-color);
 
       &:hover {
-        box-shadow: var(--shadow-base);
+        box-shadow: var(--shadow-primary);
+      }
+
+      &:active {
+        background-color: var(--blue-500);
       }
     }
 
@@ -53,11 +57,26 @@
         box-shadow: var(--shadow-base);
       }
     }
+
+    &--outline {
+      background-color: var(--white-color);
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+
+      &:hover {
+        box-shadow: var(--shadow-primary);
+      }
+
+      &:active {
+        border: 1px solid var(--blue-500);
+        color: var(--blue-500);
+      }
+    }
   }
 
   &--size {
     &--s {
-      height: toRem(32);
+      height: toRem(40);
       min-width: toRem(32);
       border-radius: toRem(4);
 
@@ -77,9 +96,10 @@
     }
 
     &--l {
-      height: toRem(46);
+      height: toRem(48);
       min-width: toRem(46);
       border-radius: toRem(5);
+      font-size: toRem(20);
 
       #{$b}__icon {
         font-size: toRem(30);
@@ -89,7 +109,13 @@
 
   &.is-disabled {
     @include disabled;
-    opacity: 0.6;
+    background-color: var(--gray-300);
+    border: 1px solid var(--gray-300);
+
+    &#{$b}--view--outline {
+      background-color: var(--white-color);
+      color: var(--gray-300);
+    }
   }
 
   &.is-only-icon {

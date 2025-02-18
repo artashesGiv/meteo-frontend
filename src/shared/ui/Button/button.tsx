@@ -6,7 +6,7 @@ import { TransitionBase } from '../TransitionBase';
 
 import './button.scss';
 
-type ButtonView = 'primary' | 'base' | 'flat' | 'secondary';
+type ButtonView = 'primary' | 'base' | 'flat' | 'secondary' | 'outline';
 type ButtonSize = 's' | 'm' | 'l';
 
 export type ButtonProps = DefaultProps<{
@@ -107,6 +107,7 @@ const SPINNER_VIEW_MAP: Record<ButtonView, SpinnerProps['view']> = {
   flat: 'primary',
   primary: 'light',
   secondary: 'light',
+  outline: 'primary',
 };
 
 const SPINNER_SIZE_MAP: Record<ButtonSize, SpinnerProps['size']> = {

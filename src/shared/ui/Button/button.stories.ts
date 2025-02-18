@@ -21,7 +21,7 @@ const meta = {
     },
     view: {
       control: 'select',
-      options: ['primary', 'base', 'flat'] as ButtonProps['view'][],
+      options: ['primary', 'base', 'flat', 'outline'] as ButtonProps['view'][],
     },
   },
 } satisfies Meta<typeof Button>;
@@ -56,6 +56,14 @@ export const Flat: Story = {
   args: {
     text: 'Button',
     view: 'flat',
+    size: 'l',
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    text: 'Button',
+    view: 'outline',
     size: 'l',
   },
 };
