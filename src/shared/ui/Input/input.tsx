@@ -1,8 +1,9 @@
 import { memo, useMemo } from 'react';
 
-import { Controller, type FieldError } from 'react-hook-form';
+import { Controller, type FieldError, useWatch } from 'react-hook-form';
 
-import { IconBase, TransitionBase } from '@/shared';
+import { IconBase } from '../IconBase';
+import { TransitionBase } from '../TransitionBase';
 
 import './input.scss';
 
@@ -12,8 +13,9 @@ export type InputProps = DefaultProps<{
   name: string;
   control: any; // TODO: типизировать
   rules?: Record<string, any>;
+  defaultValue?: string;
   successMessage?: string;
-  isSuccess?: boolean;
+  isSuccess?: (value: any) => boolean;
   error?: FieldError;
   message?: string;
   size?: 's' | 'm' | 'l';
@@ -35,9 +37,15 @@ export const Input = memo<InputProps>(props => {
     successMessage,
     isSuccess,
     message,
+    defaultValue,
   } = normalizedProps;
 
-  const classes = useInputClasses(normalizedProps);
+  const fieldValue = useWatch({ control, name, defaultValue });
+
+  const success = isSuccess ? isSuccess(fieldValue) : false;
+
+  const classes = useInputClasses(normalizedProps, success);
+
   return (
     <div className={classes}>
       {label && <div className='input__label'>{label}</div>}
@@ -46,13 +54,16 @@ export const Input = memo<InputProps>(props => {
           name={name}
           control={control}
           rules={rules}
-          render={({ field }) => (
-            <input
-              className='input__field'
-              {...field}
-              placeholder={placeholder}
-            />
-          )}
+          defaultValue={defaultValue || ''}
+          render={({ field }) => {
+            return (
+              <input
+                className='input__field'
+                {...field}
+                placeholder={placeholder}
+              />
+            );
+          }}
         />
         <TransitionBase isVisible={!!error}>
           <IconBase className='input__error-icon' name='exclamation-circle' />
@@ -63,14 +74,14 @@ export const Input = memo<InputProps>(props => {
           <TransitionBase isVisible={!!error}>{error?.message}</TransitionBase>
         )}
 
-        {!!isSuccess && !error && (
-          <TransitionBase isVisible={isSuccess && !error}>
+        {success && !error && (
+          <TransitionBase isVisible={success && !error}>
             {successMessage}
           </TransitionBase>
         )}
 
-        {!!message && !error && !isSuccess && (
-          <TransitionBase isVisible={!!message && !error && !isSuccess}>
+        {!!message && !error && !success && (
+          <TransitionBase isVisible={!!message && !error && !success}>
             {message}
           </TransitionBase>
         )}
@@ -81,14 +92,10 @@ export const Input = memo<InputProps>(props => {
 
 Input.displayName = 'Input';
 
-const useInputClasses = ({
-  className,
-  size,
-  message,
-  successMessage,
-  isSuccess,
-  error,
-}: InputProps) =>
+const useInputClasses = (
+  { className, size, message, successMessage, error }: InputProps,
+  success: boolean,
+) =>
   useMemo(() => {
     const classes = [className, 'input', `input--size--${size}`];
 
@@ -96,7 +103,7 @@ const useInputClasses = ({
       classes.push('input--message');
     }
 
-    if (isSuccess && successMessage) {
+    if (success && successMessage) {
       classes.push('input--success');
     }
 
@@ -105,4 +112,4 @@ const useInputClasses = ({
     }
 
     return classes.join(' ');
-  }, [className, size, message, successMessage, isSuccess, error]);
+  }, [success, className, size, message, successMessage, error]);

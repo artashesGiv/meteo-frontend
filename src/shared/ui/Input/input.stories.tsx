@@ -20,14 +20,10 @@ interface FormFields extends FieldValues {
 export const Base: () => JSX.Element = () => {
   const {
     control,
-    watch,
     formState: { errors },
   } = useForm<FormFields>({
-    defaultValues: { myInput: '' },
     mode: 'onChange',
   });
-
-  const value = watch('myInput');
 
   return (
     <Input
@@ -36,8 +32,9 @@ export const Base: () => JSX.Element = () => {
       rules={{ required: 'Required field' }}
       error={errors.myInput}
       message='Message length >= 5'
-      isSuccess={value.length >= 5}
+      isSuccess={value => value?.length >= 5}
       successMessage='Looks good!'
+      defaultValue='Default Value'
       label='label'
     />
   );
@@ -46,14 +43,10 @@ export const Base: () => JSX.Element = () => {
 export const SizeS: () => JSX.Element = () => {
   const {
     control,
-    watch,
     formState: { errors },
   } = useForm<FormFields>({
-    defaultValues: { myInput: '' },
     mode: 'onChange',
   });
-
-  const value = watch('myInput');
 
   return (
     <Input
@@ -62,7 +55,7 @@ export const SizeS: () => JSX.Element = () => {
       rules={{ required: 'Required field' }}
       error={errors.myInput}
       message='Message length >= 5'
-      isSuccess={value.length >= 5}
+      isSuccess={value => value?.length >= 5}
       successMessage='Looks good!'
       label='label'
       size='s'
@@ -73,14 +66,10 @@ export const SizeS: () => JSX.Element = () => {
 export const SizeM: () => JSX.Element = () => {
   const {
     control,
-    watch,
     formState: { errors },
   } = useForm<FormFields>({
-    defaultValues: { myInput: '' },
     mode: 'onChange',
   });
-
-  const value = watch('myInput');
 
   return (
     <Input
@@ -89,7 +78,7 @@ export const SizeM: () => JSX.Element = () => {
       rules={{ required: 'Required field' }}
       error={errors.myInput}
       message='Message length >= 5'
-      isSuccess={value.length >= 5}
+      isSuccess={value => value?.length >= 5}
       successMessage='Looks good!'
       label='label'
       size='m'

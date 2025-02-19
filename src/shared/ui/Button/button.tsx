@@ -18,6 +18,7 @@ export type ButtonProps = DefaultProps<{
   loading?: boolean;
   rounded?: boolean;
   squared?: boolean;
+  type?: 'submit';
 }>;
 
 export const Button = memo<ButtonProps>(props => {
@@ -34,13 +35,14 @@ export const Button = memo<ButtonProps>(props => {
     loading,
     view = 'primary',
     size = 'm',
+    type,
   } = normalizedProps;
 
   const classes = useButtonClasses(normalizedProps);
   const spinnerProps = useSpinnerProps({ view, size });
 
   return (
-    <button className={classes} onClick={onClick}>
+    <button className={classes} type={type} onClick={onClick}>
       <TransitionBase
         isVisible={true}
         keyProp={loading ? 'loading' : 'default'}
