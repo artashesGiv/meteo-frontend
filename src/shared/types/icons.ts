@@ -4,5 +4,6 @@ export type IconsId =
   | 'chevron-down'
   | 'chevron-up'
   | 'cross'
+  | 'exclamation-circle'
   | 'person-fill'
   | 'trash';

@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react';
 
 import { Controller, type FieldError } from 'react-hook-form';
 
-import { IconBase } from '@/shared';
+import { IconBase, TransitionBase } from '@/shared';
 
 import './input.scss';
 
@@ -13,12 +13,18 @@ export type InputProps = DefaultProps<{
   control: any; // TODO: типизировать
   rules?: Record<string, any>;
   successMessage?: string;
+  isSuccess?: boolean;
   error?: FieldError;
   message?: string;
   size?: 's' | 'm' | 'l';
 }>;
 
 export const Input = memo<InputProps>(props => {
+  const normalizedProps = {
+    ...props,
+    size: props.size ?? 'l',
+  };
+
   const {
     error,
     label,
@@ -27,40 +33,76 @@ export const Input = memo<InputProps>(props => {
     control,
     rules,
     successMessage,
+    isSuccess,
     message,
-  } = props;
+  } = normalizedProps;
 
-  const classes = useInputClasses(props);
+  const classes = useInputClasses(normalizedProps);
   return (
     <div className={classes}>
-      {label && <span>{label}</span>}
-      <div>
+      {label && <div className='input__label'>{label}</div>}
+      <div className='input__field-wrapper'>
         <Controller
           name={name}
           control={control}
           rules={rules}
-          render={({ field }) => <input {...field} placeholder={placeholder} />}
+          render={({ field }) => (
+            <input
+              className='input__field'
+              {...field}
+              placeholder={placeholder}
+            />
+          )}
         />
-        {error && <IconBase name='chevron-up' />}
+        <TransitionBase isVisible={!!error}>
+          <IconBase className='input__error-icon' name='exclamation-circle' />
+        </TransitionBase>
       </div>
-      {error ? (
-        <span>{error.message}</span>
-      ) : successMessage ? (
-        <span>{successMessage}</span>
-      ) : message ? (
-        <span>{message}</span>
-      ) : (
-        ''
-      )}
+      <div className='input__message'>
+        {error && (
+          <TransitionBase isVisible={!!error}>{error?.message}</TransitionBase>
+        )}
+
+        {!!isSuccess && !error && (
+          <TransitionBase isVisible={isSuccess && !error}>
+            {successMessage}
+          </TransitionBase>
+        )}
+
+        {!!message && !error && !isSuccess && (
+          <TransitionBase isVisible={!!message && !error && !isSuccess}>
+            {message}
+          </TransitionBase>
+        )}
+      </div>
     </div>
   );
 });
 
 Input.displayName = 'Input';
 
-const useInputClasses = ({ className }: InputProps) =>
+const useInputClasses = ({
+  className,
+  size,
+  message,
+  successMessage,
+  isSuccess,
+  error,
+}: InputProps) =>
   useMemo(() => {
-    const classes = [className, 'input'];
+    const classes = [className, 'input', `input--size--${size}`];
+
+    if (message) {
+      classes.push('input--message');
+    }
+
+    if (isSuccess && successMessage) {
+      classes.push('input--success');
+    }
+
+    if (error?.message) {
+      classes.push('input--error');
+    }
 
     return classes.join(' ');
-  }, [className]);
+  }, [className, size, message, successMessage, isSuccess, error]);

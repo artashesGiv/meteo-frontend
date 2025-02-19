@@ -26,17 +26,73 @@ export const Base: () => JSX.Element = () => {
     defaultValues: { myInput: '' },
     mode: 'onChange',
   });
-  const myInputValue = watch('myInput');
+
+  const value = watch('myInput');
 
   return (
-    <div>
-      <Input
-        name='myInput'
-        control={control}
-        rules={{ required: 'Required field' }}
-        error={errors.myInput}
-      />
-      {myInputValue}
-    </div>
+    <Input
+      name='myInput'
+      control={control}
+      rules={{ required: 'Required field' }}
+      error={errors.myInput}
+      message='Message length >= 5'
+      isSuccess={value.length >= 5}
+      successMessage='Looks good!'
+      label='label'
+    />
+  );
+};
+
+export const SizeS: () => JSX.Element = () => {
+  const {
+    control,
+    watch,
+    formState: { errors },
+  } = useForm<FormFields>({
+    defaultValues: { myInput: '' },
+    mode: 'onChange',
+  });
+
+  const value = watch('myInput');
+
+  return (
+    <Input
+      name='myInput'
+      control={control}
+      rules={{ required: 'Required field' }}
+      error={errors.myInput}
+      message='Message length >= 5'
+      isSuccess={value.length >= 5}
+      successMessage='Looks good!'
+      label='label'
+      size='s'
+    />
+  );
+};
+
+export const SizeM: () => JSX.Element = () => {
+  const {
+    control,
+    watch,
+    formState: { errors },
+  } = useForm<FormFields>({
+    defaultValues: { myInput: '' },
+    mode: 'onChange',
+  });
+
+  const value = watch('myInput');
+
+  return (
+    <Input
+      name='myInput'
+      control={control}
+      rules={{ required: 'Required field' }}
+      error={errors.myInput}
+      message='Message length >= 5'
+      isSuccess={value.length >= 5}
+      successMessage='Looks good!'
+      label='label'
+      size='m'
+    />
   );
 };

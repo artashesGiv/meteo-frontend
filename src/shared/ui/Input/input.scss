@@ -1,2 +1,92 @@
 .input {
+  $b: &;
+
+  &--size {
+    &--s {
+      #{$b}__field-wrapper {
+        font-size: toRem(14);
+        height: toRem(28);
+      }
+    }
+
+    &--m {
+      #{$b}__field-wrapper {
+        font-size: toRem(14);
+        height: toRem(32);
+      }
+    }
+
+    &--l {
+      #{$b}__field-wrapper {
+        font-size: toRem(20);
+        height: toRem(48);
+      }
+    }
+  }
+
+  &--message {
+    #{$b}__message {
+      margin-top: toRem(4);
+      color: var(--gray-300);
+    }
+  }
+
+  &--success {
+    border-color: var(--success-color);
+
+    #{$b}__message {
+      margin-top: toRem(4);
+      color: var(--success-color);
+    }
+  }
+
+  &--error {
+    #{$b}__field-wrapper {
+      border-color: var(--danger-color);
+    }
+
+    #{$b}__message {
+      margin-top: toRem(4);
+      color: var(--danger-color);
+    }
+  }
+
+  &__label {
+    font-size: toRem(14);
+    margin-bottom: toRem(8);
+  }
+
+  &__field-wrapper {
+    position: relative;
+    background-color: var(--white-color);
+    border: 1px solid var(--gray-300);
+    border-radius: toRem(4);
+    padding: toRem(4) toRem(40) toRem(4) toRem(8);
+    transition: var(--transition-all);
+    transition-property: border-color;
+  }
+
+  &__field {
+    all: unset;
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__error-icon {
+    position: absolute;
+    right: toRem(20);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--danger-color);
+    font-size: toRem(16);
+  }
+
+  &__message {
+    transition: var(--transition-all);
+    transition-property: color;
+  }
 }
